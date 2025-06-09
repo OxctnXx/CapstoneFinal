@@ -1,0 +1,176 @@
+/* Custom styles for the beverage recommendation platform */
+
+/* Override Bootstrap primary color */
+:root {
+    --bs-primary: #7952b3;
+    --bs-primary-rgb: 121, 82, 179;
+}
+
+/* General styles */
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #7952b3;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-brand:hover, .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Card animations */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #7952b3;
+    border-color: #7952b3;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #614092;
+    border-color: #614092;
+}
+
+.btn-outline-primary {
+    color: #7952b3;
+    border-color: #7952b3;
+}
+
+.btn-outline-primary:hover {
+    background-color: #7952b3;
+    border-color: #7952b3;
+    color: white;
+}
+
+/* Footer styles */
+footer {
+    background-color: #7952b3;
+    color: white;
+}
+
+/* Category headings */
+.category-heading {
+    border-left: 5px solid #7952b3;
+    padding-left: 10px;
+    margin: 30px 0 20px 0;
+}
+
+/* Price styling */
+.price {
+    color: #e83e8c;
+    font-weight: bold;
+}
+
+/* Badges */
+.recommendation-badge, .prediction-score, .similarity-badge {
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.recommendation-badge {
+    top: 10px;
+    right: 10px;
+}
+
+.prediction-score {
+    top: 10px;
+    left: 10px;
+}
+
+.similarity-badge {
+    top: 10px;
+    right: 10px;
+}
+
+/* Toast notifications */
+.toast {
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.toast-header {
+    background-color: #f8f9fa;
+    color: #7952b3;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 160px;
+    }
+    
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Profile page */
+.profile-header {
+    background-color: #7952b3;
+}
+
+.nav-pills .nav-link.active {
+    color: #7952b3;
+    border-left: 3px solid #7952b3;
+}
+
+/* Order cards */
+.order-id {
+    color: #7952b3;
+}
+
+/* Loading spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.spinner-border {
+    color: #7952b3;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7952b3;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #614092;
+} 

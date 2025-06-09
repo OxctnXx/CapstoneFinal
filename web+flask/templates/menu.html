@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu - Happy Drinks{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Menu</h1>
+
+<ul class="nav nav-pills mb-4" id="categoryTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="coffee-tab" data-bs-toggle="pill" data-bs-target="#coffee" type="button" role="tab">
+            Coffee
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="milk-tea-tab" data-bs-toggle="pill" data-bs-target="#milk-tea" type="button" role="tab">
+            Milk Tea
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="fruit-tea-tab" data-bs-toggle="pill" data-bs-target="#fruit-tea" type="button" role="tab">
+            Fruit Tea
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="cakes-tab" data-bs-toggle="pill" data-bs-target="#cakes" type="button" role="tab">
+            Cakes
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content" id="categoryTabContent">
+    <div class="tab-pane fade show active" id="coffee" role="tabpanel" aria-labelledby="coffee-tab">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for item in drinks.coffee %}
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <img src="{{ get_image_path(item.id, item.category, 'coffee') }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-muted">{{ category_names.coffee }}</p>
+                        <p class="card-text">{{ item.description[:80] }}{% if item.description|length > 80 %}...{% endif %}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-danger">¥{{ item.price }}</span>
+                            <div>
+                                <a href="{{ url_for('product_detail', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary me-1">Details</a>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('{{ item.id }}', '{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="tab-pane fade" id="milk-tea" role="tabpanel" aria-labelledby="milk-tea-tab">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for item in drinks.milk_tea %}
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <img src="{{ get_image_path(item.id, item.category, 'milk_tea') }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-muted">{{ category_names.milk_tea }}</p>
+                        <p class="card-text">{{ item.description[:80] }}{% if item.description|length > 80 %}...{% endif %}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-danger">¥{{ item.price }}</span>
+                            <div>
+                                <a href="{{ url_for('product_detail', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary me-1">Details</a>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('{{ item.id }}', '{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="tab-pane fade" id="fruit-tea" role="tabpanel" aria-labelledby="fruit-tea-tab">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for item in drinks.fruit_tea %}
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <img src="{{ get_image_path(item.id, item.category, 'fruit_tea') }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-muted">{{ category_names.fruit_tea }}</p>
+                        <p class="card-text">{{ item.description[:80] }}{% if item.description|length > 80 %}...{% endif %}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-danger">¥{{ item.price }}</span>
+                            <div>
+                                <a href="{{ url_for('product_detail', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary me-1">Details</a>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('{{ item.id }}', '{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="tab-pane fade" id="cakes" role="tabpanel" aria-labelledby="cakes-tab">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for item in cakes %}
+            <div class="col">
+                <div class="card h-100 product-card">
+                    <img src="{{ get_image_path(item.id, 'cake') }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text text-muted">{{ category_names.cakes }}</p>
+                        <p class="card-text">{{ item.description[:80] }}{% if item.description|length > 80 %}...{% endif %}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-danger">¥{{ item.price }}</span>
+                            <div>
+                                <a href="{{ url_for('product_detail', item_id=item.id) }}" class="btn btn-sm btn-outline-secondary me-1">Details</a>
+                                <button class="btn btn-sm btn-primary" onclick="addToCart('{{ item.id }}', '{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

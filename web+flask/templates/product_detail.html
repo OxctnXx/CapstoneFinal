@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }} - Happy Drinks{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ url_for('menu') }}">Menu</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <img src="/static/images/drinks/{% if product.subcategory %}{{ product.subcategory }}{% else %}coffee{% endif %}/{{ product.id }}.jpg" 
+                 class="card-img-top" alt="{{ product.name }}" 
+                 style="width: 100%; height: auto;">
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <h2>{{ product.name }}</h2>
+        <div class="mb-3">
+            <span class="badge bg-primary">{{ product.category_name }}</span>
+            {% if product.tags %}
+                {% for tag in product.tags %}
+                    <span class="badge bg-secondary">{{ tag }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <p class="fs-3 fw-bold text-danger mb-3">¥{{ product.price }}</p>
+        
+        <p class="mb-4">{{ product.description }}</p>
+        
+        <div class="mb-4">
+            <label for="quantity" class="form-label">Quantity</label>
+            <div class="input-group" style="width: 150px;">
+                <button class="btn btn-outline-secondary" type="button" id="decrease-qty">-</button>
+                <input type="number" class="form-control text-center" id="quantity" value="1" min="1" max="10">
+                <button class="btn btn-outline-secondary" type="button" id="increase-qty">+</button>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 col-12 col-md-8 mb-4">
+            <button class="btn btn-lg btn-primary" id="add-to-cart-btn">
+                🛒 Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quantityInput = document.getElementById('quantity');
+        const decreaseBtn = document.getElementById('decrease-qty');
+        const increaseBtn = document.getElementById('increase-qty');
+        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        
+        increaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < 10) {
+                quantityInput.value = currentValue + 1;
+            }
+        });
+        
+        decreaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+        
+        addToCartBtn.addEventListener('click', function() {
+            const quantity = parseInt(quantityInput.value);
+            addToCart('{{ product.id }}', '{{ product.name }}', '{{ product.price }}', quantity);
+        });
+    });
+</script>
+{% endblock %}

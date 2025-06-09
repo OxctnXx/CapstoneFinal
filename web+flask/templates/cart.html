@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart - Happy Drinks{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4">Shopping Cart</h2>
+    
+    {% if not cart_items %}
+    <div class="alert alert-info">
+        Your cart is empty. <a href="{{ url_for('menu') }}" class="alert-link">Browse menu</a> to add items.
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Cart Items ({{ cart_items|length }})</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ get_image_path(item.id, item.category, item.subcategory) }}" class="img-thumbnail me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <div>
+                                                <h6 class="mb-0">{{ item.name }}</h6>
+                                                <small class="text-muted">{{ item.category }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>¥{{ item.price }}</td>
+                                    <td>
+                                        <div class="input-group" style="width: 120px;">
+                                            <button class="btn btn-outline-secondary btn-sm decrease-quantity" data-id="{{ item.id }}">-</button>
+                                            <input type="text" class="form-control form-control-sm text-center item-quantity" value="{{ item.quantity }}" readonly>
+                                            <button class="btn btn-outline-secondary btn-sm increase-quantity" data-id="{{ item.id }}">+</button>
+                                        </div>
+                                    </td>
+                                    <td class="item-subtotal">¥{{ item.price * item.quantity }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger remove-item" data-id="{{ item.id }}">🗑️</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('menu') }}" class="btn btn-outline-secondary">← Continue Shopping</a>
+                        <button id="update-cart" class="btn btn-primary">Update Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Order Summary</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">¥{{ total }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Delivery Fee</span>
+                        <span>¥0</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-3">
+                        <strong>Total</strong>
+                        <strong id="cart-total">¥{{ total }}</strong>
+                    </div>
+                    <form action="{{ url_for('checkout') }}" method="post">
+                        <button type="submit" class="btn btn-success w-100">Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="card mb-4 mt-5">
+        <div class="card-header bg-white">
+            <h5 class="mb-0 text-primary">🧠 Hunyuan AI Innovative Food Concepts 🧠</h5>
+            <p class="text-muted mb-0 small">Creative food concepts designed by Tencent Hunyuan AI based on current season and weather (for display only, not actual products)</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for food in innovative_foods %}
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-info">Hunyuan AI</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <span class="display-6 text-primary">{{ food.category }}</span>
+                                <div class="mt-2 p-3 bg-light rounded-circle d-inline-block">
+                                    <span style="font-size: 2rem;">
+                                        {% if food.category == 'Milk Tea' %}🧋
+                                        {% elif food.category == 'Fruit Tea' %}🍹
+                                        {% elif food.category == 'Cake' %}🍰
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                            <h5 class="card-title text-primary text-center">{{ food.name }}</h5>
+                            <p class="card-text">{{ food.description }}</p>
+                            
+                            {% if food.seasonal_reason %}
+                            <p class="text-muted small">
+                                <strong>Seasonal Adaptation:</strong> {{ food.seasonal_reason }}
+                            </p>
+                            {% endif %}
+                            
+                            {% if food.customization %}
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark me-1">{{ food.customization.sweetness }}</span>
+                                <span class="badge bg-light text-dark">{{ food.customization.temperature }}</span>
+                            </div>
+                            {% endif %}
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-danger fw-bold">Reference Price: ¥{{ food.price }}</span>
+                                <span class="badge bg-secondary">Concept</span>
+                            </div>
+                            
+                            {% if food.ingredients %}
+                            <div class="mb-2">
+                                <a class="btn btn-sm btn-outline-primary w-100" data-bs-toggle="collapse" href="#ingredients{{ loop.index }}">
+                                    View Ingredients
+                                </a>
+                                <div class="collapse mt-2" id="ingredients{{ loop.index }}">
+                                    <div class="card card-body bg-light small">
+                                        <strong>Ingredients:</strong>
+                                        <ul class="mb-0 ps-3">
+                                            {% for ingredient in food.ingredients %}
+                                            <li>{{ ingredient.item }}: {{ ingredient.amount }}{{ ingredient.unit }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if food.steps %}
+                            <div>
+                                <a class="btn btn-sm btn-outline-primary w-100" data-bs-toggle="collapse" href="#steps{{ loop.index }}">
+                                    View Preparation Steps
+                                </a>
+                                <div class="collapse mt-2" id="steps{{ loop.index }}">
+                                    <div class="card card-body bg-light small">
+                                        <strong>Steps:</strong>
+                                        <ol class="mb-0 ps-3">
+                                            {% for step in food.steps %}
+                                            <li>{{ step }}</li>
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="small">
+                                <strong>Key Features:</strong>
+                                <ul class="mb-1 ps-3">
+                                    {% for point in food.selling_points %}
+                                    <li>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <p class="text-info mt-2 mb-0 small fst-italic">
+                                <span class="badge bg-secondary me-1">AI Generated</span>
+                                This is a creative recipe generated by Tencent Hunyuan AI, for display only and not actually produced!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    {% if recommended_products %}
+    <div class="card mt-4">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">You May Also Like</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for product in recommended_products %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="{{ get_image_path(product.id, product.category, product.subcategory) }}" class="card-img-top" alt="{{ product.name }}" style="height: 160px; object-fit: cover;">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ product.name }}</h6>
+                            <p class="card-text small text-muted">{{ product.description|truncate(60) }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-danger">¥{{ product.price }}</span>
+                                <button class="btn btn-sm btn-outline-primary add-to-cart-btn" 
+                                        data-id="{{ product.id }}" 
+                                        data-name="{{ product.name }}" 
+                                        data-price="{{ product.price }}">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const increaseButtons = document.querySelectorAll('.increase-quantity');
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            const inputField = this.previousElementSibling;
+            let quantity = parseInt(inputField.value);
+            
+            inputField.value = quantity + 1;
+            updateSubtotal(this.closest('tr'));
+        });
+    });
+    
+    const decreaseButtons = document.querySelectorAll('.decrease-quantity');
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            const inputField = this.nextElementSibling;
+            let quantity = parseInt(inputField.value);
+            
+            if (quantity > 1) {
+                inputField.value = quantity - 1;
+                updateSubtotal(this.closest('tr'));
+            }
+        });
+    });
+    
+    function updateSubtotal(row) {
+        const price = parseFloat(row.querySelector('td:nth-child(2)').textContent.replace('¥', ''));
+        const quantity = parseInt(row.querySelector('.item-quantity').value);
+        const subtotal = price * quantity;
+        
+        row.querySelector('.item-subtotal').textContent = '¥' + subtotal;
+        updateTotal();
+    }
+    
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.item-subtotal').forEach(element => {
+            total += parseFloat(element.textContent.replace('¥', ''));
+        });
+        
+        document.getElementById('cart-subtotal').textContent = '¥' + total;
+        document.getElementById('cart-total').textContent = '¥' + total;
+    }
+    
+    document.getElementById('update-cart').addEventListener('click', function() {
+        const cartItems = [];
+        document.querySelectorAll('tbody tr').forEach(row => {
+            const itemId = row.querySelector('.decrease-quantity').getAttribute('data-id');
+            const quantity = parseInt(row.querySelector('.item-quantity').value);
+            
+            cartItems.push({
+                id: itemId,
+                quantity: quantity
+            });
+        });
+        
+        fetch('/update_cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items: cartItems })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Failed to update cart');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred, please try again');
+        });
+    });
+    
+    const removeButtons = document.querySelectorAll('.remove-item');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            
+            fetch('/remove_from_cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ item_id: itemId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Failed to remove item: ' + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred, please try again');
+            });
+        });
+    });
+    
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = this.getAttribute('data-id');
+            const itemName = this.getAttribute('data-name');
+            const itemPrice = this.getAttribute('data-price');
+            
+            addToCart(itemId, itemName, itemPrice, 1);
+        });
+    });
+});
+</script>
+{% endblock %}

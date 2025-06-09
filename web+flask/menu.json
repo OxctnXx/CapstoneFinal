@@ -1,0 +1,560 @@
+{
+    "drinks": {
+        "coffee": [
+            {
+                "id": "c1",
+                "name": "Coconut Latte",
+                "price": 20,
+                "category": "Coffee",
+                "description": "Perfect fusion of coconut aroma and coffee, refreshing without being cloying. Coconut milk replaces dairy for a tropical flavor.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"]
+            },
+            {
+                "id": "c2",
+                "name": "Rich Milk Latte",
+                "price": 22,
+                "category": "Coffee",
+                "description": "Thickened milk enhances creaminess with a silky texture, ideal for those who prefer rich milk coffee.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar"]
+            },
+            {
+                "id": "c3",
+                "name": "Caramel Macchiato",
+                "price": 40,
+                "category": "Coffee",
+                "description": "Caramel sauce blended with espresso, topped with velvety foam for a balanced sweet-bitter taste. A Starbucks classic.",
+                "temperature": ["Hot"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Full sugar"],
+                "customization": ["Extra caramel"]
+            },
+            {
+                "id": "c4",
+                "name": "Vanilla Latte",
+                "price": 30,
+                "category": "Coffee",
+                "description": "Vanilla syrup mellows coffee bitterness with gentle milk aroma, perfect for coffee beginners.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "c5",
+                "name": "Iced Americano",
+                "price": 10,
+                "category": "Coffee",
+                "description": "Just espresso and water—refreshing and energizing. A budget-friendly choice from Mixue Ice City.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free"],
+                "customization": ["Add syrup"]
+            },
+            {
+                "id": "c6",
+                "name": "Strawberry Iced Latte",
+                "price": 15,
+                "category": "Coffee",
+                "description": "Strawberry jam mixed with milk coffee, featuring fruit pulp for texture and a sweet-sour coffee blend.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "c7",
+                "name": "Brown Sugar Butter Ripe Pu-erh Latte",
+                "price": 25,
+                "category": "Coffee",
+                "description": "Pu-erh tea base infused with brown sugar butter milk cap, offering rich layers and balanced tea-coffee bitterness.",
+                "temperature": ["Hot"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"]
+            },
+            {
+                "id": "c8",
+                "name": "Salted Caramel Cheese Vienna Coffee",
+                "price": 30,
+                "category": "Coffee",
+                "description": "Sea salt milk cap paired with honeycomb caramel crumbs—a savory-sweet interplay with rich texture.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"],
+                "toppings": ["Caramel crumbs"]
+            },
+            {
+                "id": "c9",
+                "name": "Qingyan Rose Black Tea Fresh Milk Tea",
+                "price": 20,
+                "category": "Coffee",
+                "description": "Rose fragrance infused with black tea latte and fresh milk, delivering a light and elegant flavor.",
+                "temperature": ["Hot"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "30% sugar"],
+                "recommended_sugar": "30% sugar"
+            },
+            {
+                "id": "c10",
+                "name": "Ice Cream Coffee",
+                "price": 15,
+                "category": "Coffee",
+                "description": "Vanilla ice cream melting into black coffee—hot-cold contrast with sweet-bitter balance.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free"],
+                "toppings": ["Vanilla ice cream"]
+            },
+            {
+                "id": "c11",
+                "name": "Magnolia White Tea Latte",
+                "price": 25,
+                "category": "Coffee",
+                "description": "White tea base with low-fat milk, featuring subtle floral notes—ideal for sugar-conscious drinkers.",
+                "temperature": ["Hot"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Sugar substitute"]
+            },
+            {
+                "id": "c12",
+                "name": "Avocado Mango Pomelo Sago Coffee",
+                "price": 22,
+                "category": "Coffee",
+                "description": "Avocado puree blended with mango pomelo sago, grapefruit bits adding tanginess—low-calorie and filling.",
+                "temperature": ["Blended"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["No added sugar"],
+                "toppings": ["Grapefruit bits"]
+            },
+            {
+                "id": "c13",
+                "name": "Blueberry Raw Cheese Fruit Coffee",
+                "price": 28,
+                "category": "Coffee",
+                "description": "Blueberry, strawberry, and raw cheese yogurt mixed with espresso—thick, sweet-sour texture.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free"]
+            },
+            {
+                "id": "c14",
+                "name": "Grapefruit Jasmine Cold Brew",
+                "price": 20,
+                "category": "Coffee",
+                "description": "Cold brew coffee with grapefruit juice and jasmine tea—refreshing and summer-perfect.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar"]
+            },
+            {
+                "id": "c15",
+                "name": "Brown Sugar Ginger Tea Latte",
+                "price": 18,
+                "category": "Coffee",
+                "description": "Brown sugar and ginger juice harmonized with coffee—warming and winter-limited.",
+                "temperature": ["Hot"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"],
+                "tags": ["Seasonal"]
+            }
+        ],
+        "milk_tea": [
+            {
+                "id": "m1",
+                "name": "Cheese Foam Tea",
+                "price": 25,
+                "category": "Milk Tea",
+                "description": "Classic cheese foam paired with tea base (choose between Four Seasons Spring Tea or Golden Phoenix Tea). Velvety texture.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "customization": ["Four Seasons Tea Base", "Golden Phoenix Tea Base"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Light sugar"
+            },
+            {
+                "id": "m2",
+                "name": "Cheese Strawberry Milk Tea",
+                "price": 28,
+                "category": "Milk Tea",
+                "description": "Fresh strawberry pulp blended with milk, topped with savory cheese foam.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "m3",
+                "name": "Bubble Milk Tea",
+                "price": 15,
+                "category": "Milk Tea",
+                "description": "Chewy pearls with smooth milk tea—classic Taiwanese style.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Half sugar", "Full sugar"],
+                "recommended_sugar": "Full sugar",
+                "toppings": ["Pearls"]
+            },
+            {
+                "id": "m4",
+                "name": "Boba Milk Tea",
+                "price": 18,
+                "category": "Milk Tea",
+                "description": "Black tea milk tea with large boba pearls for a robust taste.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Light sugar",
+                "toppings": ["Boba pearls"]
+            },
+            {
+                "id": "m5",
+                "name": "Orchid Latte",
+                "price": 20,
+                "category": "Milk Tea",
+                "description": "Ceylon black tea + fresh milk, topped with pecan crumbs—rich tea aroma.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Half sugar",
+                "toppings": ["Pecan crumbs"]
+            },
+            {
+                "id": "m6",
+                "name": "Mango Pomelo Sago Milk Tea",
+                "price": 25,
+                "category": "Milk Tea",
+                "description": "Mango coconut milk base with sago and grapefruit bits—sweet yet light.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"],
+                "toppings": ["Sago", "Grapefruit bits"]
+            },
+            {
+                "id": "m7",
+                "name": "Classic Grass Jelly Milk Tea",
+                "price": 18,
+                "category": "Milk Tea",
+                "description": "Grass jelly + red beans + pearls + peanut crumbs—generous toppings for fullness.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Half sugar",
+                "toppings": ["Grass jelly", "Red beans", "Pearls", "Peanut crumbs"]
+            },
+            {
+                "id": "m8",
+                "name": "Rock Salt Cheese Milk Tea",
+                "price": 21,
+                "category": "Milk Tea",
+                "description": "Savory-sweet cheese foam layered with Assam black tea—complex flavors.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Light sugar"
+            },
+            {
+                "id": "m9",
+                "name": "Cheese Foam Green Tea",
+                "price": 10,
+                "category": "Milk Tea",
+                "description": "Refreshing green tea base topped with light cheese foam.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "Full sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "m10",
+                "name": "Thick Taro Milk Tea",
+                "price": 18,
+                "category": "Milk Tea",
+                "description": "Velvety taro paste + fresh milk + black tea base—rich and filling.",
+                "temperature": ["Hot", "Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar"],
+                "recommended_sugar": "Light sugar",
+                "toppings": ["Taro paste"]
+            }
+        ],
+        "fruit_tea": [
+            {
+                "id": "f1",
+                "name": "Grape Cheezo Tea",
+                "price": 30,
+                "category": "Fruit Tea",
+                "description": "Kyoho grape pulp + green tea base + cheese foam—intense fruitiness.",
+                "temperature": ["Blended"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Very light sugar"],
+                "recommended_sugar": "Very light sugar"
+            },
+            {
+                "id": "f2",
+                "name": "Superior Cheese Strawberry",
+                "price": 32,
+                "category": "Fruit Tea",
+                "description": "Fresh strawberry pulp + jasmine tea base, topped with savory cheese foam.",
+                "temperature": ["Blended"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "f3",
+                "name": "Fresh Passionfruit Double Bomb",
+                "price": 18,
+                "category": "Fruit Tea",
+                "description": "Passionfruit + coconut jelly + pearls—tangy and refreshing.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Light sugar",
+                "toppings": ["Coconut jelly", "Pearls"]
+            },
+            {
+                "id": "f4",
+                "name": "Mango Pomelo Sago",
+                "price": 20,
+                "category": "Fruit Tea",
+                "description": "Mango + grapefruit bits + coconut milk + sago—classic Hong Kong style.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Fixed sweetness"],
+                "toppings": ["Sago"]
+            },
+            {
+                "id": "f5",
+                "name": "Ultimate Cheese Grape",
+                "price": 22,
+                "category": "Fruit Tea",
+                "description": "Grape pulp + jasmine tea base + cheese foam—creamy texture.",
+                "temperature": ["Blended"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar", "70% sugar"],
+                "recommended_sugar": "70% sugar"
+            },
+            {
+                "id": "f6",
+                "name": "Blueberry Raw Cheese Fruit Tea",
+                "price": 28,
+                "category": "Fruit Tea",
+                "description": "Blueberry + strawberry + avocado blended with raw cheese yogurt—thick sweet-sour mix.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["No added sugar"]
+            },
+            {
+                "id": "f7",
+                "name": "Guava Berry Cheese",
+                "price": 24,
+                "category": "Fruit Tea",
+                "description": "Guava + coconut milk + strawberry pulp, topped with savory-sweet cheese.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Half sugar"
+            },
+            {
+                "id": "f8",
+                "name": "Strawberry Peach Cheese",
+                "price": 30,
+                "category": "Fruit Tea",
+                "description": "Strawberry + peach pulp + jasmine green tea base, with velvety cheese foam.",
+                "temperature": ["Blended"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Light sugar"
+            },
+            {
+                "id": "f9",
+                "name": "Fresh Lemon Honeydew Ice",
+                "price": 18,
+                "category": "Fruit Tea",
+                "description": "Honeydew pulp + lemon juice + green tea—refreshing summer drink.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "30% sugar"],
+                "recommended_sugar": "30% sugar"
+            },
+            {
+                "id": "f10",
+                "name": "Watermelon Boba",
+                "price": 14,
+                "category": "Fruit Tea",
+                "description": "Watermelon juice + crispy boba—top summer thirst-quencher.",
+                "temperature": ["Iced"],
+                "size": ["Medium", "Large"],
+                "sugar_level": ["Sugar-free", "Light sugar", "Half sugar"],
+                "recommended_sugar": "Half sugar",
+                "toppings": ["Crispy boba"]
+            }
+        ]
+    },
+    "cakes": [
+        {
+            "id": "k1",
+            "name": "Tiramisu",
+            "price": 38,
+            "category": "Cake",
+            "description": "Classic Italian coffee dessert",
+            "tags": ["Classic", "Coffee flavor"]
+        },
+        {
+            "id": "k2",
+            "name": "Vintage Tiramisu",
+            "price": 38,
+            "category": "Cake",
+            "description": "Authentic Italian recipe—coffee and mascarpone cheese fusion, dusted with cocoa powder. Rich and moist.",
+            "tags": ["Classic", "Italian"]
+        },
+        {
+            "id": "k3",
+            "name": "Basque Cheesecake",
+            "price": 40,
+            "category": "Cake",
+            "description": "French-style dense cheesecake with caramelized top and creamy center. Moderate sweetness; pairs well with raspberry jam.",
+            "tags": ["Popular", "Cheese"]
+        },
+        {
+            "id": "k4",
+            "name": "Durian Cheesecake",
+            "price": 38,
+            "category": "Cake",
+            "description": "Durian pulp blended with cheese—rich and creamy. A must-try for durian lovers, balanced with lime mint.",
+            "tags": ["Specialty", "Cheese"]
+        },
+        {
+            "id": "k5",
+            "name": "Lemon Vanilla Basque",
+            "price": 38,
+            "category": "Cake",
+            "description": "Lemon curd meets vanilla Basque—bright and tangy, garnished with lime zest.",
+            "tags": ["Refreshing", "Cheese"]
+        },
+        {
+            "id": "k6",
+            "name": "Green Grape Guava Hojicha Chiffon Cake",
+            "price": 20,
+            "category": "Cake",
+            "description": "Hojicha chiffon layered with plain cream and guava cream, filled with fresh grapes and guava pulp—light and spring-summer perfect.",
+            "tags": ["Seasonal", "Chiffon"]
+        },
+        {
+            "id": "k7",
+            "name": "Soy Matcha Chiffon",
+            "price": 20,
+            "category": "Cake",
+            "description": "Matcha chiffon with soy custard—no fruit filling but rich bean aroma. Ideal for matcha enthusiasts.",
+            "tags": ["Matcha", "Chiffon"]
+        },
+        {
+            "id": "k8",
+            "name": "Mocha Japanese Chiffon",
+            "price": 35,
+            "category": "Cake",
+            "description": "Coffee-flavored chiffon with cocoa cream and nut crumbs—fluffy with bittersweet notes.",
+            "tags": ["Coffee", "Chiffon"]
+        },
+        {
+            "id": "k9",
+            "name": "Fresh Fruit Cream Cake",
+            "price": 38,
+            "category": "Cake",
+            "description": "Signature fruit cream cake using pure animal cream, filled with seasonal fruits like mango and strawberry. Individual portions available.",
+            "tags": ["Bestseller", "Fruit"]
+        },
+        {
+            "id": "k10",
+            "name": "Hazelnut Cream Cake",
+            "price": 35,
+            "category": "Cake",
+            "description": "Hazelnut cream paired with fluffy sponge—nutty aroma and light texture.",
+            "tags": ["Popular", "Nuts"]
+        },
+        {
+            "id": "k11",
+            "name": "Uji Matcha Red Bean Lava",
+            "price": 38,
+            "category": "Cake",
+            "description": "Uji matcha chiffon with sweet red bean filling, topped with matcha cheese foam—balanced bitterness and sweetness.",
+            "tags": ["Promo", "Japanese", "Matcha"]
+        },
+        {
+            "id": "k12",
+            "name": "Cupcake",
+            "price": 38,
+            "category": "Cake",
+            "description": "Korean-style designs with five flavors (vanilla, chocolate, etc.). Light and moderately sweet.",
+            "customization": ["Vanilla", "Chocolate", "Matcha", "Strawberry", "Blueberry"],
+            "tags": ["Korean"]
+        },
+        {
+            "id": "k13",
+            "name": "Mango Pandan Cake",
+            "price": 35,
+            "category": "Cake",
+            "description": "Pandan leaf chiffon with mango pulp—coconut and fruit fusion, moist and fresh.",
+            "tags": ["Specialty", "Southeast Asian"]
+        },
+        {
+            "id": "k14",
+            "name": "Spring Cherry Mango",
+            "price": 35,
+            "category": "Cake",
+            "description": "Mango and sakura-flavored mousse—vibrant colors and tangy freshness, embodying spring.",
+            "tags": ["Spring Limited", "Mousse"]
+        },
+        {
+            "id": "k15",
+            "name": "Lemon Almond Tart",
+            "price": 40,
+            "category": "Cake",
+            "description": "Lemon-almond combo with crisp shell and silky filling—bright citrus notes.",
+            "tags": ["Classic", "French"]
+        },
+        {
+            "id": "k16",
+            "name": "Madeleine",
+            "price": 15,
+            "category": "Cake",
+            "description": "Classic shell-shaped butter cake—crispy outside, soft inside. Pairs well with black tea.",
+            "tags": ["Classic", "French"]
+        },
+        {
+            "id": "k17",
+            "name": "Vintage Cream Puff",
+            "price": 28,
+            "category": "Cake",
+            "description": "Nostalgic piped cream puffs with generous filling—moderate sweetness and cute retro look.",
+            "tags": ["Retro", "Puff"]
+        },
+        {
+            "id": "k18",
+            "name": "Pistachio Snowball",
+            "price": 30,
+            "category": "Cake",
+            "description": "Coconut white chocolate sandwich cookies coated with raspberry powder—crunchy and lightly sweet. Perfect snack or tea companion.",
+            "tags": ["Snack"],
+            "unit": "10 pieces/serving"
+        },
+        {
+            "id": "k19",
+            "name": "Almond Tuile",
+            "price": 25,
+            "category": "Cake",
+            "description": "Crispy almond slices with caramel—nutty aroma and low sweetness. Ideal coffee pairing.",
+            "tags": ["Coffee Pairing", "Snack"]
+        },
+        {
+            "id": "k20",
+            "name": "Earl Grey Diamond Cookie",
+            "price": 20,
+            "category": "Cake",
+            "description": "Earl Grey-infused butter cookies—crisp with lingering tea fragrance.",
+            "tags": ["Tea Aroma", "Snack"]
+        }
+    ]
+}
